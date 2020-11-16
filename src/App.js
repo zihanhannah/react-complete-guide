@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import './Person/Person.css';
 import Person from './Person/Person';
+import person from './Person/Person';
 
 class App extends Component {
   state = {
@@ -41,7 +42,7 @@ class App extends Component {
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({showPersons : !doesShow});
+    this.setState({ showPersons: !doesShow });
   }
 
   render() {
@@ -51,6 +52,29 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
+    }
+    // second method for toggle handler:::recommanded way to use
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}>
+          </Person>
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            click={this.switchNameHandler.bind(this, 'ZZ')}
+            changed={this.nameChangedHandler}> My hobbies: Racing
+        </Person>
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}>
+          </Person>
+        </div>
+      )
     }
     return (
       <div className="App">
@@ -75,7 +99,8 @@ class App extends Component {
         <button
           style={style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {
+        {/* first method for toggle handler */}
+        {/* {
           this.state.showPersons ?
             <div>
               <Person
@@ -94,7 +119,10 @@ class App extends Component {
               </Person>
             </div> : null
 
-        }
+        } */}
+
+        {/* second method for toggle handler */}
+        {persons}
 
 
       </div>
