@@ -2,6 +2,7 @@
 // import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './Person/Person.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -35,7 +36,14 @@ class App extends Component {
   })
   }
 
-  render() {
+  render (){
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+      }
     return (
       <div className="App">
         {/* <h1> I am react app</h1>
@@ -53,7 +61,9 @@ class App extends Component {
         {/* <Person name="max" age = "29" />
         <Person name = "Manu" age = "30"> My hobbies: racing </Person> */}
 
-        <button onClick={()=>this.switchNameHandler("Maxim")}>Switch Name</button>
+        <button 
+          style={style}
+          onClick={()=>this.switchNameHandler("Maxim")}>Switch Name</button>
         <Person 
         name={this.state.persons[0].name} 
         age={this.state.persons[0].age}>
