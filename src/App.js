@@ -5,7 +5,7 @@ import './App.css';
 import './Person/Person.css';
 import Person from './Person/Person';
 import person from './Person/Person';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
   state = {
@@ -134,6 +134,7 @@ class App extends Component {
 
     }
     return (
+      <StyleRoot>
       <div className="App">
         {/* <h1> I am react app</h1>
         <header className="App-header">
@@ -184,6 +185,7 @@ class App extends Component {
 
 
       </div>
+      </StyleRoot>
     );
   }
 }
