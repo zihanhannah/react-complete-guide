@@ -9,9 +9,9 @@ import person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { id:'asfa1' ,name: "Max", age: 28 },
-      { id:'vasdf1' ,name: "Manu", age: 30 },
-      { id:'asdf11' ,name: "Stephanie", age: 26 }
+      { id: 'asfa1', name: "Max", age: 28 },
+      { id: 'vasdf1', name: "Manu", age: 30 },
+      { id: 'asdf11', name: "Stephanie", age: 26 }
 
     ],
 
@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   // switchNameHandler = (newName) => {
-  //   // console.log('was clicked');
+  //   // console.log('was clicked');      
   //   this.setState({
   //     persons: [
   //       { name: newName, age: 28 },
@@ -31,21 +31,21 @@ class App extends Component {
   // }
 
 
-  nameChangedHandler = (event,id) => {
-    const personIndex = this.state.persons.findIndex(p=> {
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
     const person = {
       ...this.state.persons[personIndex]
     };
     // ... equals to assign
-   // const person = Object.assign({}, this.state.persons[personIndex]);
+    // const person = Object.assign({}, this.state.persons[personIndex]);
 
-   person.name = event.target.value;
-   const persons = [...this.state.persons];
-   persons[personIndex] = person;
+    person.name = event.target.value;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
 
-   this.setState({persons: persons});
+    this.setState({ persons: persons });
 
     // this.setState({
     //   persons: [
@@ -69,7 +69,8 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -90,7 +91,7 @@ class App extends Component {
               name={person.name}
               age={person.age}
               key={person.id}
-              changed={(event)=> this.nameChangedHandler(event,person.id)} />
+              changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
         </div>
         // <div>
@@ -110,6 +111,18 @@ class App extends Component {
         //   </Person>
         // </div>
       );
+      style.backgroundColor = "red";
+    }
+
+    // let classes = ['red','bold'].join(' ');
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red')//classes = ['red']
+
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold')//classes = ['red','bold']
+
     }
     return (
       <div className="App">
@@ -124,7 +137,8 @@ class App extends Component {
 
 
         <h1>Hello</h1>
-        <p>This is really working!</p>
+        {/* <p calssName={classes}>This is really working!</p> */}
+        <p className={classes.join(' ')}>This is really working!</p>
         {/* <Person name="max" age = "29" />
         <Person name = "Manu" age = "30"> My hobbies: racing </Person> */}
 
