@@ -17,11 +17,11 @@ text-align: center;
 `;
 const person = (props) => {
 // return <p> I am a Person and I am {Math.floor(Math.random()*30)} years old!</p>
-const style ={
-    '@media (min-width: 500px)':{
-        width:'450px'
-    }
-}
+// const style ={
+//     '@media (min-width: 500px)':{
+//         width:'450px'
+//     }
+// }
 return (
 // {/* <div className="Person" style={style}> */}
 <StyledDiv>

@@ -8,6 +8,18 @@ import person from './Person/Person';
 // import Radium, {StyleRoot} from 'radium';
 import styled from 'styled-components';
 
+const StyledButton = styled.button`
+background-color: ${props => props.alt ? 'red' : 'green'};
+color: white;
+font: inherit;
+border: 1px solid blue;
+padding: 8px;
+cursor: pointer;
+&:hover {
+  background-color:${props => props.alt ? 'salmon' : 'lightgreen'};
+  color:black;
+}
+`;
 class App extends Component {
   state = {
     persons: [
@@ -81,63 +93,63 @@ class App extends Component {
         backgroundColor:'lightgreen',
         color:'black'
       }
-    }
+  }
     // second method for toggle handler:::recommanded way to use
     let persons = null;
 
-    if (this.state.showPersons) {
-      persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return <Person
-              // first method
-              // click={() => this.deletePersonHandler(index)}
-              // second method
-              click={this.deletePersonHandler.bind(this, index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)} />
-          })}
-        </div>
-        // <div>
-        //   <Person
-        //     name={this.state.persons[0].name}
-        //     age={this.state.persons[0].age}>
-        //   </Person>
-        //   <Person
-        //     name={this.state.persons[1].name}
-        //     age={this.state.persons[1].age}
-        //     click={this.switchNameHandler.bind(this, 'ZZ')}
-        //     changed={this.nameChangedHandler}> My hobbies: Racing
-        // </Person>
-        //   <Person
-        //     name={this.state.persons[2].name}
-        //     age={this.state.persons[2].age}>
-        //   </Person>
-        // </div>
-      );
-      style.backgroundColor = "red";
-      style[':hover'] ={
-        backgroundColor:'salmon',
-        color:'black'
-      };
-    }
+if (this.state.showPersons) {
+  persons = (
+    <div>
+      {this.state.persons.map((person, index) => {
+        return <Person
+          // first method
+          // click={() => this.deletePersonHandler(index)}
+          // second method
+          click={this.deletePersonHandler.bind(this, index)}
+          name={person.name}
+          age={person.age}
+          key={person.id}
+          changed={(event) => this.nameChangedHandler(event, person.id)} />
+      })}
+    </div>
+    // <div>
+    //   <Person
+    //     name={this.state.persons[0].name}
+    //     age={this.state.persons[0].age}>
+    //   </Person>
+    //   <Person
+    //     name={this.state.persons[1].name}
+    //     age={this.state.persons[1].age}
+    //     click={this.switchNameHandler.bind(this, 'ZZ')}
+    //     changed={this.nameChangedHandler}> My hobbies: Racing
+    // </Person>
+    //   <Person
+    //     name={this.state.persons[2].name}
+    //     age={this.state.persons[2].age}>
+    //   </Person>
+    // </div>
+  );
+  style.backgroundColor = "red";
+  style[':hover'] = {
+    backgroundColor: 'salmon',
+    color: 'black'
+  };
+}
 
-    // let classes = ['red','bold'].join(' ');
-    const classes = [];
-    if (this.state.persons.length <= 2) {
-      classes.push('red')//classes = ['red']
+// let classes = ['red','bold'].join(' ');
+const classes = [];
+if (this.state.persons.length <= 2) {
+  classes.push('red')//classes = ['red']
 
-    }
-    if (this.state.persons.length <= 1) {
-      classes.push('bold')//classes = ['red','bold']
+}
+if (this.state.persons.length <= 1) {
+  classes.push('bold')//classes = ['red','bold']
 
-    }
-    return (
-      // <StyleRoot>
-      <div className="App">
-        {/* <h1> I am react app</h1>
+}
+return (
+  // <StyleRoot>
+  <div className="App">
+    {/* <h1> I am react app</h1>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
@@ -147,20 +159,22 @@ class App extends Component {
         </p> */}
 
 
-        <h1>Hello</h1>
-        {/* <p calssName={classes}>This is really working!</p> */}
-        <p className={classes.join(' ')}>This is really working!</p>
-        {/* <Person name="max" age = "29" />
+    <h1>Hello</h1>
+    {/* <p calssName={classes}>This is really working!</p> */}
+    <p className={classes.join(' ')}>This is really working!</p>
+    {/* <Person name="max" age = "29" />
         <Person name = "Manu" age = "30"> My hobbies: racing </Person> */}
 
-        {/* <button 
+    {/* <button 
           style={style}
           onClick={()=>this.switchNameHandler("Maxim")}>Switch Name</button> */}
-        <button
-          style={style}
-          onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {/* first method for toggle handler */}
-        {/* {
+    {/* <button
+      style={style}
+      onClick={this.togglePersonsHandler}>Toggle Persons</button> */}
+          <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
+
+    {/* first method for toggle handler */}
+    {/* {
           this.state.showPersons ?
             <div>
               <Person
@@ -181,13 +195,13 @@ class App extends Component {
 
         } */}
 
-        {/* second method for toggle handler */}
-        {persons}
+    {/* second method for toggle handler */}
+    {persons}
 
 
-      </div>
-      // </StyleRoot>
-    );
+  </div>
+  // </StyleRoot>
+);
   }
 }
 export default App;
