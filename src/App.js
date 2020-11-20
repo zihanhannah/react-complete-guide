@@ -4,9 +4,9 @@ import logo from './logo.svg';
 import './App.css';
 import './Person/Person.css';
 import Person from './Person/Person';
-import person from './Person/Person';
+// import person from './Person/Person';
 // import Radium, {StyleRoot} from 'radium';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 const StyledButton = styled.button`
 background-color: ${props => props.alt ? 'red' : 'green'};
