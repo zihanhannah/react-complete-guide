@@ -5,7 +5,8 @@ import './App.css';
 import './Person/Person.css';
 import Person from './Person/Person';
 import person from './Person/Person';
-import Radium, {StyleRoot} from 'radium';
+// import Radium, {StyleRoot} from 'radium';
+import styled from 'styled-components';
 
 class App extends Component {
   state = {
@@ -134,7 +135,7 @@ class App extends Component {
 
     }
     return (
-      <StyleRoot>
+      // <StyleRoot>
       <div className="App">
         {/* <h1> I am react app</h1>
         <header className="App-header">
@@ -185,11 +186,11 @@ class App extends Component {
 
 
       </div>
-      </StyleRoot>
+      // </StyleRoot>
     );
   }
 }
-export default Radium(App);
+export default App;
 
 // const app = props => {
 //   const [personsState, setPersonsState] = useState({
