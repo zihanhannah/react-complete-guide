@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 // import React, {useState} from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 // import './App.css';
 import classes from './App.css';
-import './Person/Person.css';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Cockpit from '../components/Cockpit/Cockpit'
+import '../components/Persons/Person/Person.css';
+import Persons from '../components/Persons/Persons';
+// import Person from '../components/Persons/Person/Person';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 // import person from './Person/Person';
 // import Radium, {StyleRoot} from 'radium';
 // import styled from 'styled-components';
@@ -99,21 +101,28 @@ class App extends Component {
     // second method for toggle handler:::recommanded way to use
     let persons = null;
     // let btnClass=[classes.Button];
-    let btnClass = "";
+    // let btnClass = "";
 
 if (this.state.showPersons) {
-  persons = (
-    <div>
-      {this.state.persons.map((person, index) => {
-        return (<ErrorBoundary key={person.id}>
+  persons = <Persons
+      persons={this.state.persons}
+      clicked={this.deletePersonHandler}
+      changed={this.nameChangedHandler}
+        />
+
+      {/* {this.state.persons.map((person, index) => {
+        return (
+        // <ErrorBoundary >
           <Person
           click={this.deletePersonHandler.bind(this, index)}
           name={person.name}
           age={person.age}
+          key={person.id}
           changed={(event) => this.nameChangedHandler(event, person.id)} />
-        </ErrorBoundary>)
-      })}
-    </div>
+        //  </ErrorBoundary>
+        )
+      })} */}
+
     // <div>
     //   <Person
     //     name={this.state.persons[0].name}
@@ -130,26 +139,26 @@ if (this.state.showPersons) {
     //     age={this.state.persons[2].age}>
     //   </Person>
     // </div>
-  );
+  
   // style.backgroundColor = "red";
   // style[':hover'] = {
   //   backgroundColor: 'salmon',
   //   color: 'black'
   // };
   // btnClass.push(classes.Red);
-  btnClass = classes.Red;
+  // btnClass = classes.Red;
 }
 
 // let classes = ['red','bold'].join(' ');
-const assignedClasses = [];
-if (this.state.persons.length <= 2) {
-  assignedClasses.push(classes.red)//classes = ['red']
+// const assignedClasses = [];
+// if (this.state.persons.length <= 2) {
+//   assignedClasses.push(classes.red)//classes = ['red']
 
-}
-if (this.state.persons.length <= 1) {
-  assignedClasses.push(classes.bold)//classes = ['red','bold']
+// }
+// if (this.state.persons.length <= 1) {
+//   assignedClasses.push(classes.bold)//classes = ['red','bold']
 
-}
+// }
 return (
   // <StyleRoot>
   // <div className="App">
@@ -164,18 +173,18 @@ return (
         </p> */}
 
 
-    <h1>Hello</h1>
+    {/* <h1>Hello</h1> */}
     {/* <p calssName={classes}>This is really working!</p> */}
-    <p className={assignedClasses.join(' ')}>This is really working!</p>
+    {/* <p className={assignedClasses.join(' ')}>This is really working!</p> */}
     {/* <Person name="max" age = "29" />
         <Person name = "Manu" age = "30"> My hobbies: racing </Person> */}
 
     {/* <button 
           style={style}
           onClick={()=>this.switchNameHandler("Maxim")}>Switch Name</button> */}
-    <button
+    {/* <button
       className={btnClass}
-      onClick={this.togglePersonsHandler}>Toggle Persons</button>
+      onClick={this.togglePersonsHandler}>Toggle Persons</button> */}
   
       {/* for styled component */}
           {/* <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton> */}
@@ -203,6 +212,9 @@ return (
         } */}
 
     {/* second method for toggle handler */}
+    <Cockpit showPersons={this.state.showPersons}
+    persons={this.state.persons}
+    clicked={this.togglePersonsHandler}/>
     {persons}
 
 
