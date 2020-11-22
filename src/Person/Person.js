@@ -17,6 +17,10 @@ import classes from './Person.css'
 
 // `;
 const person = (props) => {
+    const rnd = Math.random();
+    if(rnd > 0.7){
+        throw new Error('Something went wrong');
+    }
 // return <p> I am a Person and I am {Math.floor(Math.random()*30)} years old!</p>
 // const style ={
 //     '@media (min-width: 500px)':{

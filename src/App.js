@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import classes from './App.css';
 import './Person/Person.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 // import person from './Person/Person';
 // import Radium, {StyleRoot} from 'radium';
 // import styled from 'styled-components';
@@ -104,15 +105,13 @@ if (this.state.showPersons) {
   persons = (
     <div>
       {this.state.persons.map((person, index) => {
-        return <Person
-          // first method
-          // click={() => this.deletePersonHandler(index)}
-          // second method
+        return (<ErrorBoundary key={person.id}>
+          <Person
           click={this.deletePersonHandler.bind(this, index)}
           name={person.name}
           age={person.age}
-          key={person.id}
           changed={(event) => this.nameChangedHandler(event, person.id)} />
+        </ErrorBoundary>)
       })}
     </div>
     // <div>
