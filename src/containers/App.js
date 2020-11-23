@@ -25,6 +25,22 @@ import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 // }
 // `;
 class App extends Component {
+  constructor(props){
+    super(props);
+    console.log('[App.js] constructor');
+    //CAN SETTING INITIAL state
+    // this.state = {
+    //   persons: [
+    //     { id: 'asfa1', name: "Max", age: 28 },
+    //     { id: 'vasdf1', name: "Manu", age: 30 },
+    //     { id: 'asdf11', name: "Stephanie", age: 26 }
+  
+    //   ],
+  
+    //   otherState: 'some other value',
+    //   showPersons: false
+    // }
+  }
   state = {
     persons: [
       { id: 'asfa1', name: "Max", age: 28 },
@@ -37,6 +53,16 @@ class App extends Component {
     showPersons: false
   }
 
+  static getDerivedStateFromProps(props,state){
+    console.log('[App.js] getDerivedStateFromProps',props);
+    return state;
+  }
+
+
+ 
+  componentDidMount(){
+    console.log('[App.js] componentDidMount');
+  }
   // switchNameHandler = (newName) => {
   //   // console.log('was clicked');      
   //   this.setState({
@@ -86,6 +112,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] render');
   //   const style = {
   //     backgroundColor: 'green',
   //     color: 'white',

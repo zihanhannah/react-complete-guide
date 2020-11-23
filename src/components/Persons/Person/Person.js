@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Radium from 'radium';
 // import styled from 'styled-components';
 import classes from './Person.css'
@@ -16,27 +16,45 @@ import classes from './Person.css'
 // }
 
 // `;
-const person = (props) => {
-    // const rnd = Math.random();
-    // if(rnd > 0.7){
-    //     throw new Error('Something went wrong');
-    // }
-// return <p> I am a Person and I am {Math.floor(Math.random()*30)} years old!</p>
-// const style ={
-//     '@media (min-width: 500px)':{
-//         width:'450px'
-//     }
-// }
-return (
-// {/* <div className="Person" style={style}> */}
-<div className={classes.Person}>
-{/* <StyledDiv> */}
-<p onClick={props.click}> I am {props.name} and I am {props.age} years old</p>
-<p>{props.children}</p>
-<input type="text" onChange={props.changed} value={props.name}></input>
-{/* // </StyledDiv> */}
-</div>
-);
-};
+// const person = (props) => {
+//     console.log('[Person.js] rendering...');
+//     // const rnd = Math.random();
+//     // if(rnd > 0.7){
+//     //     throw new Error('Something went wrong');
+//     // }
+// // return <p> I am a Person and I am {Math.floor(Math.random()*30)} years old!</p>
+// // const style ={
+// //     '@media (min-width: 500px)':{
+// //         width:'450px'
+// //     }
+// // }
+// return (
+// // {/* <div className="Person" style={style}> */}
+// <div className={classes.Person}>
+// {/* <StyledDiv> */}
+// <p onClick={props.click}> I am {props.name} and I am {props.age} years old</p>
+// <p>{props.children}</p>
+// <input type="text" onChange={props.changed} value={props.name}></input>
+// {/* // </StyledDiv> */}
+// </div>
+// );
+// };
 
-export default person;
+// export default person;
+
+class Person extends Component{
+    render(){
+        console.log('[Person.js] rendering...');
+        return (
+            // {/* <div className="Person" style={style}> */}
+            <div className={classes.Person}>
+            {/* <StyledDiv> */}
+            <p onClick={this.props.click}> I am {this.props.name} and I am {this.props.age} years old</p>
+            <p>{this.props.children}</p>
+            <input type="text" onChange={this.props.changed} value={this.props.name}></input>
+            {/* // </StyledDiv> */}
+            </div>
+            );
+    }
+}
+export default Person;
