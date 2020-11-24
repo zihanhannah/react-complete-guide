@@ -50,7 +50,8 @@ class App extends Component {
     ],
 
     otherState: 'some other value',
-    showPersons: false
+    showPersons: false,
+    showCockpit:true
   }
 
   static getDerivedStateFromProps(props,state){
@@ -62,6 +63,13 @@ class App extends Component {
  
   componentDidMount(){
     console.log('[App.js] componentDidMount');
+  }
+  shouldComponentUpdate(nextProps,nextState){
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+  componentDidUpdate(){
+    console.log('[App.js] componentDidUpdate');
   }
   // switchNameHandler = (newName) => {
   //   // console.log('was clicked');      
@@ -239,11 +247,15 @@ return (
         } */}
 
     {/* second method for toggle handler */}
-    <Cockpit
+    <button onClick={()=> {
+      this.setState({showCockpit:false});
+    }}>Remove Cockpit</button>
+    {this.state.showCockpit ? <Cockpit
     title={this.props.appTitle}
     showPersons={this.state.showPersons}
     persons={this.state.persons}
-    clicked={this.togglePersonsHandler}/>
+    clicked={this.togglePersonsHandler}/> :null}
+
     {persons}
 
 
