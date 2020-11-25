@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Radium from 'radium';
 // import styled from 'styled-components';
-import classes from './Person.css'
+import classes from './Person.css';
+import Aux from '../../../hoc/Aux';
 // const StyledDiv = styled.div`
 
 // width: 60%;
@@ -46,14 +47,16 @@ class Person extends Component{
     render(){
         console.log('[Person.js] rendering...');
         return (
-            // {/* <div className="Person" style={style}> */}
-            <div className={classes.Person}>
+            <Aux>
+            {/* <div className="Person" style={style}> */}
+            {/* <div className={classes.Person}> */}
             {/* <StyledDiv> */}
             <p onClick={this.props.click}> I am {this.props.name} and I am {this.props.age} years old</p>
             <p>{this.props.children}</p>
             <input type="text" onChange={this.props.changed} value={this.props.name}></input>
             {/* // </StyledDiv> */}
-            </div>
+            {/* </div> */}
+            </Aux>
             );
     }
 }
